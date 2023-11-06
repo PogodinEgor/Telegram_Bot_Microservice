@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="1" author="Pogodin Egor">
+        <createTable tableName="binary_content">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="file_as_array_of_bytes" type="bytea"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Pogodin Egor">
+        <createTable tableName="app_document">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="telegram_file_id" type="varchar(255)"/>
+            <column name="doc_name" type="varchar(255)"/>
+            <column name="binary_content_id" type="bigint">
+                <constraints foreignKeyName="app_document_binary_content_id" references="binary_content(id)"/>
+            </column>
+            <column name="mime_type" type="varchar(255)"/>
+            <column name="file_size" type="bigint"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="Pogodin Egor">
+        <createTable tableName="app_photo">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="telegram_file_id" type="varchar(255)"/>
+            <column name="binary_content_id" type="bigint">
+                <constraints foreignKeyName="app_photo_binary_content_id" references="binary_content(id)"/>
+            </column>
+            <column name="file_size" type="bigint"/>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
+

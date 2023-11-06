@@ -1,0 +1,14 @@
+server:
+ port: 8086
+
+spring:
+ datasource:
+  url: jdbc:postgresql://localhost:5432/telegram_boot
+  username: postgres
+  password: *******
+ jpa:
+  generate-ddl: false
+ liquibase:
+  change-log: classpath:db/changelog/db.changelog-master.xml
+
+salt: "sfzgmzsm;kNUGugdgajvogadjdgpihUGYIFyiadghgiadnviy&^*^d8fq7yhauhg"

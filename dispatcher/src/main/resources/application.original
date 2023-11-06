@@ -1,0 +1,20 @@
+server:
+  port: 8084
+  ssl:
+    enabled: false
+bot:
+  name: pogrebok_u_babuskhi_bot
+  token: ********************
+  uri: https://0832-82-151-123-191.ngrok-free.app
+
+spring:
+ rabbitmq:
+  host: localhost
+  port: 5672
+  username: ******
+  password: ******
+  queues:
+   text-message-update: text_message_update
+   doc-message-update: doc_message_update
+   photo-message-update: photo_message_update
+   answer-message: answer_message
